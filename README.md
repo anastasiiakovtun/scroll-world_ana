@@ -12,19 +12,24 @@ Scale-reversal journey: An ordinary puddle reflection becomes an immense blue wo
 
 ## Features
 
-- ✓ Scroll-controlled video playback (forward & backward)
-- ✓ 26 seconds of seamless AI-generated transitions
-- ✓ Luxury typography with Berold font
-- ✓ Reduced-motion accessibility fallback
-- ✓ Responsive design
+- ✓ Scroll-controlled video playback in both directions
+- ✓ Four editorial chapters with intentional scene holds
+- ✓ 40-second virtual scroll timeline mapped to the 26-second master journey
+- ✓ Reduced-motion fallback that avoids video decoding and uses the final poster
+- ✓ Responsive chapter navigation and keyboard-focusable controls
+- ✓ Missing-media fallback while the final video is not yet committed
 
 ## Technical Stack
 
 - **Build tool:** Vite
 - **Styling:** SCSS
 - **Scroll engine:** Vanilla JavaScript
+- **Scroll-world reference:** [oso95/scroll-world](https://github.com/oso95/scroll-world)
+- **Engine adaptation:** blob loading, seek coalescing, sticky stage and reduced-motion handling adapted for one master clip
 - **Video generation:** Magnific AI (Seedance 2.5 Pro)
 - **Resolution:** 720p, 24fps
+- **Audio:** intentionally removed from the web prototype
+- **Display type:** Berold is installed locally on the development computer; the public repository uses `local()` font resolution and a serif fallback until web-embedding rights are confirmed
 
 ## Local Development
 
@@ -38,6 +43,14 @@ npm run dev
 # Build for production
 npm run build
 ```
+
+Before testing the full visual timeline, place the prepared silent file at:
+
+```text
+public/video/lheure-bleue-master.mp4
+```
+
+The video is intentionally not committed yet. `public/video/README.md` contains the exact audio-removal command; `ffmpeg -c copy -an` removes only the audio stream without re-encoding the picture.
 
 ## Video Structure
 
