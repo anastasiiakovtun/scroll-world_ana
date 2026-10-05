@@ -1,81 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L'Heure Bleue — The Blue Hour</title>
-  <meta name="description" content="An immersive journey through the blue hour. A scroll experience for Guerlain's L'Heure Bleue.">
-  <link rel="stylesheet" href="/src/style.scss">
-</head>
-<body>
-  
-  <div class="scroll-container" data-scroll-world>
-    
-    <!-- Opening Title -->
-    <section class="scene scene--opening">
-      <div class="scene__content">
-        <h1 class="title title--main">L'Heure Bleue</h1>
-        <p class="scroll-hint">Scroll to discover</p>
-      </div>
-    </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1424" />
+    <meta
+      name="description"
+      content="L'Heure Bleue: a scroll-controlled journey from a puddle reflection into the iris and back to the physical world."
+    />
+    <title>L'Heure Bleue — A World Held in Water</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#journey">Skip to the journey</a>
 
-    <!-- Video Journey -->
-    <div class="video-wrapper">
-      <video 
-        class="scroll-video" 
-        preload="auto"
-        muted
-        playsinline
-        data-scroll-video>
-        <source src="/public/video/lheure-bleue-master.mp4" type="video/mp4">
-      </video>
-      
-      <!-- Scene Text Overlays -->
-      <div class="scene-text scene-text--1" data-progress="0.05">
-        <p class="scene-text__line">The reflection</p>
-      </div>
-      
-      <div class="scene-text scene-text--2" data-progress="0.25">
-        <p class="scene-text__line">The blue hour</p>
-      </div>
-      
-      <div class="scene-text scene-text--3" data-progress="0.50">
-        <p class="scene-text__line">Inside the flower</p>
-      </div>
-      
-      <div class="scene-text scene-text--4" data-progress="0.90">
-        <h2 class="scene-text__product">L'Heure Bleue</h2>
-        <p class="scene-text__subtitle">Eau de Parfum</p>
-      </div>
-    </div>
-
-    <!-- Final Scene -->
-    <section class="scene scene--final">
-      <div class="scene__content">
-        <h2 class="title title--product">L'Heure Bleue</h2>
-        <p class="subtitle">Eau de Parfum</p>
-        
-        <div class="notes">
-          <p>Ozonic accord / Iris / Vanilla</p>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__veil" aria-hidden="true"></div>
+        <div class="hero__content">
+          <p class="eyebrow">A visual study in scale</p>
+          <h1 id="hero-title">L'Heure<br />Bleue</h1>
+          <p class="hero__dek">A world held in water.</p>
+          <a class="scroll-cue" href="#journey">
+            <span>Scroll to enter</span>
+            <span class="scroll-cue__line" aria-hidden="true"></span>
+          </a>
         </div>
-        
-        <footer class="credits">
-          <p>Student concept by Anastasiia Kovtun</p>
-          <p class="disclaimer">AI-generated visualization. Not affiliated with Guerlain.</p>
-        </footer>
+      </section>
+
+      <section
+        class="experience"
+        id="journey"
+        data-scroll-experience
+        aria-labelledby="journey-title"
+      >
+        <div class="experience__sticky">
+          <div class="experience__visual" aria-label="Scroll-controlled visual journey">
+            <video
+              class="experience__video"
+              data-scroll-video
+              preload="metadata"
+              muted
+              playsinline
+              poster="/video/final-arrangement.jpg"
+              aria-label="A visual journey from a puddle reflection into an iris and back to the bottle"
+            >
+              <source src="/video/lheure-bleue-master.mp4" type="video/mp4" />
+            </video>
+            <div class="media-status" data-media-status role="status">
+              <p class="media-status__title">The journey is ready to enter.</p>
+              <p>Add <code>lheure-bleue-master.mp4</code> to <code>public/video/</code> to connect the visual sequence.</p>
+            </div>
+            <div class="visual-shade" aria-hidden="true"></div>
+          </div>
+
+          <div class="experience__copy" aria-live="polite">
+            <p class="experience__chapter" data-copy-chapter>01 / 04</p>
+            <p class="experience__eyebrow" data-copy-eyebrow>The reflection</p>
+            <h2 id="journey-title" data-copy-title>A world held in water.</h2>
+            <p class="experience__line" data-copy-line>
+              The last light rests on the surface before the scale begins to change.
+            </p>
+          </div>
+
+          <nav class="timeline-nav" aria-label="Journey chapters">
+            <button type="button" data-jump="0">Reflection</button>
+            <button type="button" data-jump="6">Blue hour</button>
+            <button type="button" data-jump="17">Inside the iris</button>
+            <button type="button" data-jump="29">Return</button>
+          </nav>
+
+          <p class="experience__instruction" data-scroll-instruction>
+            Scroll slowly to move through the image
+          </p>
+        </div>
+        <div class="experience__track" aria-hidden="true"></div>
+      </section>
+
+      <section class="ending" aria-labelledby="ending-title">
+        <div class="ending__content">
+          <p class="eyebrow">The world returns to scale</p>
+          <h2 id="ending-title">L'Heure Bleue</h2>
+          <p class="ending__subtitle">Eau de Parfum</p>
+          <p class="ending__copy">
+            What seemed immense was always held in one iris, beside the bottle and the
+            same quiet puddle.
+          </p>
+          <div class="ending__rule" aria-hidden="true"></div>
+          <p class="ending__credit">Student concept by Anastasiia Kovtun</p>
+          <p class="ending__disclaimer">AI-generated visualization. Not affiliated with Guerlain.</p>
+        </div>
+      </section>
+    </main>
+
+    <noscript>
+      <div class="no-script">
+        <h1>L'Heure Bleue</h1>
+        <p>Please enable JavaScript to experience the scroll-controlled journey.</p>
       </div>
-    </section>
+    </noscript>
 
-  </div>
-
-  <!-- Reduced Motion Fallback -->
-  <noscript>
-    <div class="fallback">
-      <h1>L'Heure Bleue</h1>
-      <p>This experience requires JavaScript and motion support.</p>
-    </div>
-  </noscript>
-
-  <script type="module" src="/src/main.js"></script>
-</body>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
