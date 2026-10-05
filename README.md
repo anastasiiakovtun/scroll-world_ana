@@ -4,9 +4,9 @@ An immersive scroll-controlled journey for Guerlain's L'Heure Bleue, where scrol
 
 ## Live Website
 
-🔗 **[View Live Site](#)** *(GitHub Pages URL will be added after the first successful deployment.)*
+🔗 **[View Live Site](https://anastasiiakovtun.github.io/scroll-world_ana/)**
 
-GitHub Pages is configured through `.github/workflows/deploy.yml`. After the first workflow succeeds, set the repository's Pages source to **GitHub Actions** and replace the placeholder above with the generated URL.
+The site is deployed through GitHub Actions and GitHub Pages. The final master video is intentionally not in the repository yet, so the deployed page currently shows its missing-media fallback until the asset is added.
 
 ## Concept
 
