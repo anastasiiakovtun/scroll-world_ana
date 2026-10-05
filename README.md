@@ -4,7 +4,9 @@ An immersive scroll-controlled journey for Guerlain's L'Heure Bleue, where scrol
 
 ## Live Website
 
-🔗 **[View Live Site](#)** *(URL will be added after deployment)*
+🔗 **[View Live Site](#)** *(GitHub Pages URL will be added after the first successful deployment.)*
+
+GitHub Pages is configured through `.github/workflows/deploy.yml`. After the first workflow succeeds, set the repository's Pages source to **GitHub Actions** and replace the placeholder above with the generated URL.
 
 ## Concept
 
