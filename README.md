@@ -6,7 +6,7 @@ An immersive scroll-controlled journey for Guerlain's L'Heure Bleue, where scrol
 
 🔗 **[View Live Site](https://anastasiiakovtun.github.io/scroll-world_ana/)**
 
-The site is deployed through GitHub Actions and GitHub Pages. The final master video is intentionally not in the repository yet, so the deployed page currently shows its missing-media fallback until the asset is added.
+The site is deployed through GitHub Actions and GitHub Pages. The master video is committed as a silent H.264 asset in `public/video/`.
 
 ## Concept
 
@@ -16,10 +16,10 @@ Scale-reversal journey: An ordinary puddle reflection becomes an immense blue wo
 
 - ✓ Scroll-controlled video playback in both directions
 - ✓ Four editorial chapters with intentional scene holds
-- ✓ 40-second virtual scroll timeline mapped to the 26-second master journey
+- ✓ 40-second virtual scroll timeline mapped to the 25.23-second master journey
 - ✓ Reduced-motion fallback that avoids video decoding and uses the final poster
 - ✓ Responsive chapter navigation and keyboard-focusable controls
-- ✓ Missing-media fallback while the final video is not yet committed
+- ✓ Missing-media fallback when the video is unavailable
 
 ## Technical Stack
 
@@ -61,7 +61,7 @@ The video is intentionally not committed yet. `public/video/README.md` contains 
 3. **Iris macro journey** (8.87s)
 4. **Final scale reveal** (4s)
 
-**Total:** ~26 seconds
+**Total:** ~25.23 seconds of video, expanded to a 40-second scroll experience through scene holds
 
 ## Credits
 
