@@ -1,0 +1,508 @@
+$night: #0b1424;
+$indigo: #28427a;
+$steel: #446f91;
+$pale-sky: #b3c6d1;
+$warm-grey: #cdbdba;
+$ink: #f1eee8;
+$muted: rgba(241, 238, 232, 0.68);
+$line: rgba(241, 238, 232, 0.22);
+
+// The font is installed locally as “Berold regular.otf” and “Berold stylistic.otf”.
+// local() keeps the preview faithful without copying a potentially licensed font
+// into a public repository. A bundled webfont can be added later if its licence allows.
+$display: 'Berold', 'Berold Regular', 'Berold Local', 'Bodoni Moda', Didot, serif;
+$body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+:root {
+  color-scheme: dark;
+  font-family: $body;
+  font-synthesis: none;
+  background: $night;
+  color: $ink;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: $night;
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: $night;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  color: $night;
+  background: $pale-sky;
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.eyebrow {
+  margin: 0;
+  color: $pale-sky;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.hero,
+.ending {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 70% 24%, rgba($steel, 0.45), transparent 38%),
+    linear-gradient(145deg, $night 0%, #18284a 62%, #253b68 100%);
+}
+
+.hero::before,
+.ending::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(112deg, transparent 0 48%, rgba($warm-grey, 0.12) 48.2%, transparent 49%),
+    radial-gradient(ellipse at 50% 100%, rgba($pale-sky, 0.18), transparent 58%);
+  content: '';
+  opacity: 0.7;
+}
+
+.hero__veil {
+  position: absolute;
+  inset: auto -10% -30%;
+  z-index: -1;
+  height: 58%;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, rgba($pale-sky, 0.12), transparent 68%);
+  filter: blur(2px);
+  transform: rotate(-3deg);
+}
+
+.hero__content,
+.ending__content {
+  width: min(90vw, 840px);
+  text-align: center;
+}
+
+.hero h1,
+.ending h2 {
+  margin: 1.2rem 0 0;
+  color: $ink;
+  font-family: $display;
+  font-size: clamp(4.2rem, 14vw, 10rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.79;
+  text-wrap: balance;
+}
+
+.hero__dek {
+  margin: 2rem 0 0;
+  color: $muted;
+  font-family: $display;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  letter-spacing: 0.02em;
+}
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(4rem, 13vh, 8rem);
+  color: $pale-sky;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.scroll-cue__line {
+  display: block;
+  width: 4.5rem;
+  height: 1px;
+  background: $pale-sky;
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.scroll-cue:hover .scroll-cue__line,
+.scroll-cue:focus-visible .scroll-cue__line {
+  transform: scaleX(1.35);
+}
+
+.experience {
+  position: relative;
+  min-height: 500vh;
+  background: $night;
+}
+
+.experience__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: $night;
+}
+
+.experience__visual,
+.experience__video,
+.visual-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.experience__visual {
+  background:
+    linear-gradient(135deg, rgba($indigo, 0.9), rgba($night, 0.96)),
+    radial-gradient(circle at 55% 40%, $steel, $night 70%);
+}
+
+.experience__video {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.experience__video:not(.is-reduced-motion) {
+  opacity: 1;
+}
+
+.experience__video.is-reduced-motion {
+  opacity: 0.9;
+}
+
+.visual-shade {
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba($night, 0.76), transparent 46%),
+    linear-gradient(0deg, rgba($night, 0.5), transparent 35%, rgba($night, 0.12));
+}
+
+.media-status {
+  position: absolute;
+  right: clamp(1.25rem, 5vw, 5rem);
+  bottom: clamp(5rem, 12vh, 8rem);
+  z-index: 2;
+  width: min(25rem, calc(100vw - 2.5rem));
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba($pale-sky, 0.35);
+  background: rgba($night, 0.72);
+  color: $muted;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  backdrop-filter: blur(14px);
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.media-status.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.media-status.is-error {
+  border-color: rgba($warm-grey, 0.65);
+}
+
+.media-status__title {
+  margin: 0 0 0.35rem;
+  color: $ink;
+  font-family: $display;
+  font-size: 1.15rem;
+}
+
+.media-status p:last-child {
+  margin: 0;
+}
+
+code {
+  color: $pale-sky;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+}
+
+.experience__copy {
+  position: absolute;
+  top: 50%;
+  left: clamp(1.25rem, 8vw, 8rem);
+  z-index: 4;
+  width: min(36rem, 44vw);
+  transform: translateY(-50%);
+}
+
+.experience__chapter {
+  margin: 0 0 1.2rem;
+  color: rgba($pale-sky, 0.55);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+
+.experience__eyebrow {
+  margin: 0;
+  color: $pale-sky;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.experience__copy h2 {
+  margin: 0.85rem 0 0;
+  color: $ink;
+  font-family: $display;
+  font-size: clamp(2.6rem, 5.5vw, 6rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.experience__line {
+  max-width: 29rem;
+  margin: 1.5rem 0 0;
+  color: $muted;
+  font-size: clamp(1rem, 1.45vw, 1.28rem);
+  line-height: 1.55;
+}
+
+.timeline-nav {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 4vw, 4rem);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transform: translateY(-50%);
+}
+
+.timeline-nav button {
+  position: relative;
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  border: 0;
+  background: transparent;
+  color: rgba($ink, 0.52);
+  cursor: pointer;
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  text-align: right;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.timeline-nav button::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: '';
+  transform: translateY(-50%);
+}
+
+.timeline-nav button:hover,
+.timeline-nav button:focus-visible,
+.timeline-nav button.is-active {
+  color: $pale-sky;
+}
+
+.timeline-nav button.is-active::before {
+  background: $pale-sky;
+  box-shadow: 0 0 0 4px rgba($pale-sky, 0.18);
+}
+
+.experience__instruction {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  z-index: 4;
+  margin: 0;
+  color: rgba($ink, 0.65);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  transition: opacity 260ms ease;
+}
+
+.experience__instruction.is-hidden {
+  opacity: 0;
+}
+
+.ending {
+  min-height: 100svh;
+  padding: 6rem 1.25rem;
+  background:
+    radial-gradient(circle at 50% 24%, rgba($steel, 0.52), transparent 40%),
+    linear-gradient(145deg, #111d35, $night 70%);
+}
+
+.ending h2 {
+  font-size: clamp(4rem, 11vw, 8rem);
+}
+
+.ending__subtitle {
+  margin: 1.5rem 0 0;
+  color: $pale-sky;
+  font-family: $display;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  letter-spacing: 0.06em;
+}
+
+.ending__copy {
+  width: min(32rem, 90vw);
+  margin: 2.5rem auto 0;
+  color: $muted;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.ending__rule {
+  width: 5rem;
+  height: 1px;
+  margin: 3rem auto 2rem;
+  background: $pale-sky;
+  opacity: 0.6;
+}
+
+.ending__credit,
+.ending__disclaimer {
+  margin: 0.45rem 0 0;
+  color: rgba($ink, 0.62);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.ending__disclaimer {
+  color: rgba($ink, 0.42);
+  font-size: 0.65rem;
+}
+
+.no-script {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  padding: 2rem;
+  color: $ink;
+  background: $night;
+  text-align: center;
+}
+
+.no-script h1 {
+  font-family: $display;
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+@media (max-width: 760px) {
+  .hero h1,
+  .ending h2 {
+    font-size: clamp(4rem, 21vw, 7rem);
+  }
+
+  .experience__copy {
+    top: auto;
+    right: 1.25rem;
+    bottom: 5.5rem;
+    left: 1.25rem;
+    width: auto;
+    transform: none;
+  }
+
+  .experience__copy h2 {
+    max-width: 18rem;
+    font-size: clamp(2.45rem, 12vw, 4rem);
+  }
+
+  .experience__line {
+    max-width: 25rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .timeline-nav {
+    top: 1.25rem;
+    right: 1.25rem;
+    flex-direction: row;
+    gap: 0.55rem;
+    transform: none;
+  }
+
+  .timeline-nav button {
+    width: 0.65rem;
+    height: 1.3rem;
+    overflow: hidden;
+    padding: 0;
+    color: rgba($ink, 0.5);
+    font-size: 0;
+  }
+
+  .timeline-nav button::before {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .media-status {
+    right: 1.25rem;
+    bottom: 14rem;
+  }
+
+  .experience__instruction {
+    bottom: 1rem;
+    font-size: 0.6rem;
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .experience__video {
+    opacity: 0.9;
+  }
+}
