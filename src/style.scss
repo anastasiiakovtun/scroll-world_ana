@@ -7,10 +7,17 @@ $ink: #f1eee8;
 $muted: rgba(241, 238, 232, 0.68);
 $line: rgba(241, 238, 232, 0.22);
 
-// The font is installed locally as “Berold regular.otf” and “Berold stylistic.otf”.
-// local() keeps the preview faithful without copying a potentially licensed font
-// into a public repository. A bundled webfont can be added later if its licence allows.
-$display: 'Berold', 'Berold Regular', 'Berold Local', 'Bodoni Moda', Didot, serif;
+// Only the regular Berold face is bundled. The stylistic font is deliberately
+// excluded from the project and is never referenced by the CSS.
+@font-face {
+  font-family: 'Berold Regular Only';
+  src: url('./fonts/Berold-Regular.otf') format('opentype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+$display: 'Berold Regular Only', 'Bodoni Moda', Didot, serif;
 $body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
 
 :root {

@@ -31,7 +31,7 @@ Scale-reversal journey: An ordinary puddle reflection becomes an immense blue wo
 - **Video generation:** Magnific AI (Seedance 2.5 Pro)
 - **Resolution:** 720p, 24fps
 - **Audio:** intentionally removed from the web prototype
-- **Display type:** Berold is installed locally on the development computer; the public repository uses `local()` font resolution and a serif fallback until web-embedding rights are confirmed
+- **Display type:** Bundled `Berold regular.otf` only; the stylistic Berold face is deliberately excluded
 
 ## Local Development
 
