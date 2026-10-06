@@ -270,9 +270,25 @@ code {
   z-index: 4;
   width: min(36rem, 44vw);
   transform: translateY(-50%);
+  transition: left 700ms cubic-bezier(0.22, 1, 0.36, 1), top 700ms cubic-bezier(0.22, 1, 0.36, 1), width 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1), text-align 700ms ease;
+}
+
+.experience__copy.is-intro {
+  top: 50%;
+  left: 50%;
+  width: min(48rem, 78vw);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.experience__copy.is-intro .experience__line {
+  max-width: 34rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .experience__chapter {
+  display: none;
   margin: 0 0 1.2rem;
   color: rgba($pale-sky, 0.55);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -306,6 +322,19 @@ code {
   color: $muted;
   font-size: clamp(1rem, 1.45vw, 1.28rem);
   line-height: 1.55;
+}
+
+.experience__copy.is-intro h2 {
+  max-width: 17ch;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
+  letter-spacing: -0.03em;
+  text-shadow: 0 3px 30px rgba($night, 0.58);
+}
+
+.experience__copy.is-intro .experience__eyebrow {
+  letter-spacing: 0.16em;
 }
 
 .timeline-nav {
@@ -452,6 +481,16 @@ code {
     left: 1.25rem;
     width: auto;
     transform: none;
+  }
+
+  .experience__copy.is-intro {
+    top: 50%;
+    right: 1.25rem;
+    bottom: auto;
+    left: 1.25rem;
+    width: auto;
+    transform: translateY(-50%);
+    text-align: center;
   }
 
   .experience__copy h2 {
