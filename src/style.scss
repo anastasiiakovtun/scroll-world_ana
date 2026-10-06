@@ -456,6 +456,64 @@ code {
   font-size: 0.65rem;
 }
 
+.site-footer {
+  position: relative;
+  display: grid;
+  min-height: 30svh;
+  place-content: center;
+  gap: 0.55rem;
+  padding: 4rem 1.25rem;
+  background: $night;
+  text-align: center;
+}
+
+.site-footer::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4rem;
+  height: 1px;
+  background: rgba($pale-sky, 0.42);
+  content: '';
+  transform: translateX(-50%);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer__brand {
+  color: $pale-sky;
+  font-family: $display;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+}
+
+.site-footer__credit,
+.site-footer__disclaimer {
+  color: rgba($ink, 0.52);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.site-footer__disclaimer {
+  color: rgba($ink, 0.34);
+  font-size: 0.62rem;
+}
+
+.site-footer__return {
+  margin-top: 1.15rem;
+  color: rgba($pale-sky, 0.72);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.site-footer__return:hover,
+.site-footer__return:focus-visible {
+  color: $ink;
+}
+
 .no-script {
   min-height: 100vh;
   display: grid;
