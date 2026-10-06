@@ -202,8 +202,9 @@ export function mountScrollWorld(container, config) {
 
   video.addEventListener('timeupdate', () => {
     if (openingLoop && video.currentTime >= openingDuration - 0.04) {
-      video.currentTime = 0;
-      video.play().catch(() => {});
+      openingLoop = false;
+      video.pause();
+      video.currentTime = openingDuration - 0.04;
     }
   });
 
