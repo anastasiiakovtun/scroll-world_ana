@@ -38,6 +38,9 @@ export function mountScrollWorld(container, config) {
   let rafPending = false;
   let blobUrl = null;
   let lastChapter = -1;
+  let openingLoop = false;
+  let openingIdleTimer = null;
+  const openingDuration = config.openingDuration || 4.04;
 
   track.style.height = `${config.scrollHeight || 500}vh`;
   video.pause();
@@ -56,6 +59,27 @@ export function mountScrollWorld(container, config) {
 
   function getTimelineTime() {
     return getProgress() * timeline.duration;
+  }
+
+  function stopOpeningLoop() {
+    if (!openingLoop) return;
+    openingLoop = false;
+    video.pause();
+  }
+
+  function startOpeningLoop() {
+    if (reduce.matches || !ready || getProgress() > 0.001) return;
+    openingLoop = true;
+    seeking = false;
+    if (video.currentTime >= openingDuration - 0.05 || video.currentTime > openingDuration) {
+      video.currentTime = 0;
+    }
+    video.play().catch(() => {});
+  }
+
+  function queueOpeningLoop() {
+    window.clearTimeout(openingIdleTimer);
+    openingIdleTimer = window.setTimeout(startOpeningLoop, 220);
   }
 
   function getVideoTime(time) {
@@ -103,6 +127,8 @@ export function mountScrollWorld(container, config) {
     updateCopy(time);
     updateInstruction(time);
     document.documentElement.style.setProperty('--journey-progress', getProgress().toFixed(4));
+
+    if (openingLoop) return;
 
     if (reduce.matches) {
       video.pause();
@@ -162,6 +188,7 @@ export function mountScrollWorld(container, config) {
     ready = true;
     status?.classList.add('is-hidden');
     update();
+    queueOpeningLoop();
   });
 
   video.addEventListener('loadeddata', () => {
@@ -171,6 +198,13 @@ export function mountScrollWorld(container, config) {
   video.addEventListener('seeked', () => {
     seeking = false;
     update();
+  });
+
+  video.addEventListener('timeupdate', () => {
+    if (openingLoop && video.currentTime >= openingDuration - 0.04) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
   });
 
   video.addEventListener('error', () => {
@@ -187,7 +221,17 @@ export function mountScrollWorld(container, config) {
     });
   });
 
-  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  function handleScroll() {
+    if (getProgress() > 0.001) {
+      window.clearTimeout(openingIdleTimer);
+      stopOpeningLoop();
+    } else {
+      queueOpeningLoop();
+    }
+    scheduleUpdate();
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
   window.addEventListener('resize', scheduleUpdate, { passive: true });
   reduce.addEventListener?.('change', scheduleUpdate);
 
@@ -195,12 +239,14 @@ export function mountScrollWorld(container, config) {
   // decoding. The final arrangement poster is therefore the accessible fallback.
   if (!reduce.matches) loadVideo();
   update();
+  queueOpeningLoop();
 
   return {
     update,
     destroy() {
-      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', scheduleUpdate);
+      window.clearTimeout(openingIdleTimer);
       if (blobUrl) URL.revokeObjectURL(blobUrl);
     },
   };
