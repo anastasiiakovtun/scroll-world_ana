@@ -47,8 +47,8 @@ mountScrollWorld(document.querySelector('[data-scroll-experience]'), {
   scrollHeight: 500,
   timeline: {
     duration: 40,
-    videoStart: 6,
-    videoEnd: 32,
+    videoStart: 0,
+    videoEnd: 40,
   },
   sections,
 });

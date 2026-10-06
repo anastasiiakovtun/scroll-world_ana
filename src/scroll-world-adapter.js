@@ -83,9 +83,8 @@ export function mountScrollWorld(container, config) {
   }
 
   function getVideoTime(time) {
-    if (time <= timeline.videoStart) return 0;
-    if (time >= timeline.videoEnd) return videoDuration;
-    return ((time - timeline.videoStart) / (timeline.videoEnd - timeline.videoStart)) * videoDuration;
+    const scrollProgress = clamp(time / timeline.duration);
+    return openingDuration + scrollProgress * (videoDuration - openingDuration);
   }
 
   function activeChapter(time) {

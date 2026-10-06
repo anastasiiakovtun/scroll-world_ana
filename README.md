@@ -16,7 +16,7 @@ Scale-reversal journey: An ordinary puddle reflection becomes an immense blue wo
 
 - ✓ Scroll-controlled video playback in both directions
 - ✓ Four editorial chapters with intentional scene holds
-- ✓ 40-second virtual scroll timeline mapped to the 25.23-second master journey
+- ✓ 40-second virtual scroll timeline mapped to the 28.8-second website master
 - ✓ Reduced-motion fallback that avoids video decoding and uses the final poster
 - ✓ Responsive chapter navigation and keyboard-focusable controls
 - ✓ Missing-media fallback when the video is unavailable
