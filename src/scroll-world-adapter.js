@@ -188,11 +188,11 @@ export function mountScrollWorld(container, config) {
     ready = true;
     status?.classList.add('is-hidden');
     update();
-    queueOpeningLoop();
   });
 
   video.addEventListener('loadeddata', () => {
     status?.classList.add('is-hidden');
+    queueOpeningLoop();
   });
 
   video.addEventListener('seeked', () => {
