@@ -13,7 +13,6 @@ export function mountScrollWorld(container, config) {
   const track = container.querySelector('.experience__track');
   const status = container.querySelector('[data-media-status]');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const copyLayer = container.querySelector('.experience__copy');
   const copy = {
     chapter: container.querySelector('[data-copy-chapter]'),
     eyebrow: container.querySelector('[data-copy-eyebrow]'),
@@ -99,7 +98,6 @@ export function mountScrollWorld(container, config) {
   function update() {
     const progress = getProgress();
     const time = progress * timeline.duration;
-    copyLayer?.classList.toggle('is-intro', progress < 0.12);
     updateCopy(time);
     updateInstruction(time);
     document.documentElement.style.setProperty('--journey-progress', getProgress().toFixed(4));
