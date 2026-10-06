@@ -41,6 +41,10 @@ export function mountScrollWorld(container, config) {
 
   track.style.height = `${config.scrollHeight || 500}vh`;
   video.pause();
+  if (reduce.matches && config.reducedMotionPoster) {
+    video.poster = config.reducedMotionPoster;
+  }
+  status?.classList.add('is-hidden');
 
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 

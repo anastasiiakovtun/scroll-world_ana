@@ -234,6 +234,8 @@ button {
   font-size: 0.78rem;
   line-height: 1.55;
   backdrop-filter: blur(14px);
+  visibility: hidden;
+  opacity: 0;
   transition: opacity 220ms ease, visibility 220ms ease;
 }
 
@@ -243,6 +245,8 @@ button {
 }
 
 .media-status.is-error {
+  visibility: visible;
+  opacity: 1;
   border-color: rgba($warm-grey, 0.65);
 }
 
