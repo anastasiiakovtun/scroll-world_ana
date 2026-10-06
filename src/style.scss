@@ -270,15 +270,26 @@ code {
 .experience__copy {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: clamp(1.25rem, 8vw, 8rem);
   z-index: 4;
+  width: min(36rem, 44vw);
+  text-align: left;
+  transform: translateY(-50%);
+  transition: left 700ms cubic-bezier(0.22, 1, 0.36, 1), top 700ms cubic-bezier(0.22, 1, 0.36, 1), width 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1), text-align 700ms ease;
+}
+
+.experience__copy.is-intro {
+  top: 50%;
+  left: 50%;
   width: min(48rem, 78vw);
   text-align: center;
   transform: translate(-50%, -50%);
 }
 
-.experience__eyebrow.is-visible {
-  display: block;
+.experience__copy.is-intro .experience__line {
+  max-width: 34rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .experience__chapter {
@@ -515,6 +526,16 @@ code {
   }
 
   .experience__copy {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 1.25rem;
+    width: calc(100% - 2.5rem);
+    transform: translateY(-50%);
+    text-align: left;
+  }
+
+  .experience__copy.is-intro {
     top: 50%;
     right: 1.25rem;
     bottom: auto;

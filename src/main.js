@@ -6,7 +6,7 @@ const sections = [
     start: 0,
     end: 6,
     number: '01 / 04',
-    eyebrow: "L'Heure Bleue · Eau de Parfum",
+    eyebrow: '',
     title: 'The blue hour, held in iris.',
     line: 'A cool floral trace rests in the last light before the world begins to open.',
   },
