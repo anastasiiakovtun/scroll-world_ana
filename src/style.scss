@@ -330,6 +330,14 @@ code {
   line-height: 1.55;
 }
 
+.experience__copy.is-intro h2,
+.experience__copy.is-intro .experience__line {
+  width: min(34rem, 100%);
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
 .timeline-nav {
   position: absolute;
   top: 50%;

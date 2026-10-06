@@ -39,7 +39,7 @@ const sections = [
 mountScrollWorld(document.querySelector('[data-scroll-experience]'), {
   clip: 'video/lheure-bleue-master.mp4',
   reducedMotionPoster: 'video/final-arrangement.jpg',
-  videoDuration: 25.23,
+  videoDuration: 28.8,
   scrollHeight: 500,
   timeline: {
     duration: 40,
