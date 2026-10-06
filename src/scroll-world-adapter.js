@@ -75,6 +75,7 @@ export function mountScrollWorld(container, config) {
     const chapter = chapters[index];
     copy.chapter.textContent = chapter.number;
     copy.eyebrow.textContent = chapter.eyebrow;
+    copy.eyebrow.classList.toggle('is-visible', index === 0);
     copy.title.textContent = chapter.title;
     copy.line.textContent = chapter.line;
 

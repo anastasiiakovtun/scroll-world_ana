@@ -277,6 +277,10 @@ code {
   transform: translate(-50%, -50%);
 }
 
+.experience__eyebrow.is-visible {
+  display: block;
+}
+
 .experience__chapter {
   display: none;
   margin: 0 0 1.2rem;
