@@ -480,6 +480,13 @@ code {
   margin: 0;
 }
 
+.site-footer__logo {
+  width: clamp(5rem, 7vw, 6.5rem);
+  height: auto;
+  margin: 0 auto 0.8rem;
+  opacity: 0.9;
+}
+
 .site-footer__brand {
   color: $pale-sky;
   font-family: $display;
