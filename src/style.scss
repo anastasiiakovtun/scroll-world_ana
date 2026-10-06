@@ -324,10 +324,11 @@ code {
 
 .experience__line {
   max-width: 29rem;
-  margin: 0.75rem auto 0;
+  margin: 0.75rem 0 0;
   color: $muted;
   font-size: clamp(1rem, 1.45vw, 1.28rem);
   line-height: 1.55;
+  text-align: left;
 }
 
 .experience__copy.is-intro h2,
